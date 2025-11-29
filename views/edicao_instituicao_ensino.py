@@ -60,14 +60,14 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
 
     def delete_entity(self):
         answer = CTkMessagebox(
-            title="Confirm Delete",
-            message="Are you sure?",
+            title="Confirmar Exclusão",
+            message="Realmente deseja Excluir?",
             icon="warning",
-            option_1="Yes",
-            option_2="No"
+            option_1="Sim",
+            option_2="Não"
         ).get()
                 
-        if answer == "Yes":
+        if answer == "Sim":
             df = pd.read_csv(self.csv_path, dtype={"identificador": str})
             df = df[df["identificador"] != self.entity_id]
             df.to_csv(self.csv_path, index=False)
