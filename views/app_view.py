@@ -4,15 +4,17 @@ from views.menu_screen import MenuScreen
 from views.cadastro_instituicao_ensino import CadastroInstituicaoEnsino
 from views.listagem_instituicao_ensino import ListagemInstituicaoEnsino
 from views.edicao_instituicao_ensino import EdicaoInstituicaoEnsino
+from views.cadastro_capacitacao import CadastroCapacitacao
 
 class AppView(ctk.CTk):
-    def __init__(self, instituicao_ensino_controller):
+    def __init__(self, instituicao_ensino_controller, capacitacao_controller):
         super().__init__()
 
         self.title("Projeto Rondon")
         self.geometry("700x450")
 
         self.instituicao_ensino_controller = instituicao_ensino_controller
+        self.capacitacao_controller = capacitacao_controller
 
         self.container = ctk.CTkFrame(self)
         self.container.pack(fill="both", expand=True)
@@ -24,7 +26,8 @@ class AppView(ctk.CTk):
             "Menu": MenuScreen(self.container, self),
             "CadastroInstituicaoEnsino": CadastroInstituicaoEnsino(self.container, self, instituicao_ensino_controller),
             "ListagemInstituicaoEnsino": ListagemInstituicaoEnsino(self.container, self, csv_path=instituicao_ensino_controller.csv_path),
-            "EdicaoInstituicaoEnsino": EdicaoInstituicaoEnsino(self.container, self, instituicao_ensino_controller.csv_path)
+            "EdicaoInstituicaoEnsino": EdicaoInstituicaoEnsino(self.container, self, instituicao_ensino_controller.csv_path),
+            "CadastroCapacitacao": CadastroCapacitacao(self.container, self, capacitacao_controller),
         }
 
         for frame in self.frames.values():
