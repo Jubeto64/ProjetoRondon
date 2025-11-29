@@ -20,9 +20,11 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
         self.descricao = ctk.CTkEntry(self, placeholder_text="Descricao")
         self.descricao.pack(pady=10)
 
-        ctk.CTkButton(self, text="Atualizar", command=self.save_changes).pack(pady=20)
+        ctk.CTkButton(self, text="Atualizar", command=self.save_changes).pack(pady=10)
 
-        ctk.CTkButton(self, text="Voltar", command=lambda: app.show_frame("ListagemInstituicaoEnsino")).pack()
+        ctk.CTkButton(self, text="Excluir", fg_color="red", hover_color="#ff4d4d", command=self.delete_entity).pack(pady=10)
+
+        ctk.CTkButton(self, text="Voltar", command=lambda: app.show_frame("ListagemInstituicaoEnsino")).pack(pady=10)
 
     def load_entity(self, entity_id):
         self.entity_id = entity_id
@@ -55,3 +57,22 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
 
         self.app.frames["ListagemInstituicaoEnsino"].load_table()
         self.app.show_frame("ListagemInstituicaoEnsino")
+
+    def delete_entity(self):
+        answer = CTkMessagebox(
+            title="Confirm Delete",
+            message="Are you sure?",
+            icon="warning",
+            option_1="Yes",
+            option_2="No"
+        ).get()
+                
+        if answer == "Yes":
+            df = pd.read_csv(self.csv_path, dtype={"identificador": str})
+            df = df[df["identificador"] != self.entity_id]
+            df.to_csv(self.csv_path, index=False)
+
+            CTkMessagebox(title="Excluído", message="Instituição de Ensino Exluída com sucesso!", icon="check")
+
+            self.app.frames["ListagemInstituicaoEnsino"].load_table()
+            self.app.show_frame("ListagemInstituicaoEnsino")

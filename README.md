@@ -13,3 +13,13 @@ Vocês foram contratados para desenvolverem um sistema de cadastro de capacitaç
 9. - autenticação de uma instituição de ensino
 
 OBS.: todos os dados deverão ser persistidos em formato arquivo (.csv) com recursos de dataframe e, ou caso o aluno tenha conhecimento, pode ser armazenado em banco de dados.
+
+# Instalação de dependencias:
+
+CustomTkinter:
+
+pip install customtkinter
+
+CTkMessagebox:
+
+pip install CTkMessagebox
