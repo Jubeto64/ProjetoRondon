@@ -11,3 +11,8 @@ class MenuScreen(ctk.CTkFrame):
             self, text="Cadastro de Instituicao de Ensino",
             command=lambda: app.show_frame("CadastroInstituicaoEnsino")
         ).pack(pady=15)
+
+        ctk.CTkButton(
+            self, text="Listagem de Instituições de Ensino",
+            command=lambda: app.show_frame("ListagemInstituicaoEnsino")
+        ).pack(pady=15)

@@ -2,6 +2,7 @@ import customtkinter as ctk
 
 from views.menu_screen import MenuScreen
 from views.cadastro_instituicao_ensino import CadastroInstituicaoEnsino
+from views.listagem_instituicao_ensino import ListagemInstituicaoEnsino
 
 class AppView(ctk.CTk):
     def __init__(self, instituicao_ensino_controller):
@@ -20,7 +21,8 @@ class AppView(ctk.CTk):
 
         self.frames = {
             "Menu": MenuScreen(self.container, self),
-            "CadastroInstituicaoEnsino": CadastroInstituicaoEnsino(self.container, self, instituicao_ensino_controller)
+            "CadastroInstituicaoEnsino": CadastroInstituicaoEnsino(self.container, self, instituicao_ensino_controller),
+            "ListagemInstituicaoEnsino": ListagemInstituicaoEnsino(self.container, self, csv_path=instituicao_ensino_controller.csv_path)
         }
 
         for frame in self.frames.values():
