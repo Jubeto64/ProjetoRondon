@@ -1,4 +1,5 @@
 from helpers.csv_helper import save_to_csv
+from CTkMessagebox import CTkMessagebox
 
 class InstituicaoEnsinoController:
     def __init__(self):
@@ -10,4 +11,11 @@ class InstituicaoEnsinoController:
             "nome": nome,
             "descricao": descricao
         }
+
         save_to_csv(data, self.csv_path)
+
+        CTkMessagebox(
+            title="Sucesso",
+            message="Instituição de Ensino Cadastrada",
+            icon="check"
+        )

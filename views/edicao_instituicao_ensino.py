@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import pandas as pd
-
+from CTkMessagebox import CTkMessagebox
 
 class EdicaoInstituicaoEnsino(ctk.CTkFrame):
     def __init__(self, parent, app, csv_path):
@@ -46,6 +46,12 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
         df.loc[df["identificador"] == str(self.entity_id), "identificador"] = self.identificador.get()
 
         df.to_csv(self.csv_path, index=False)
+
+        CTkMessagebox(
+            title="Sucesso",
+            message="Instituição de Ensino Atualizada",
+            icon="check"
+        )
 
         self.app.frames["ListagemInstituicaoEnsino"].load_table()
         self.app.show_frame("ListagemInstituicaoEnsino")
