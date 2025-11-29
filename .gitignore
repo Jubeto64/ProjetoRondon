@@ -1,0 +1,77 @@
+# ============================
+# PYTHON BUILD ARTIFACTS
+# ============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ============================
+# VIRTUAL ENVIRONMENTS
+# ============================
+venv/
+env/
+.venv/
+
+# ============================
+# EDITOR / IDE FILES
+# ============================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ============================
+# LOGS
+# ============================
+*.log
+
+# ============================
+# DATA FILES
+# (Pandas CSV storage for entities)
+# ============================
+/data/*.csv
+/data/*.xlsx
+/data/*.json
+
+# ============================
+# BACKUPS / TEMP FILES
+# ============================
+*.bak
+*.tmp
+*.temp
+
+# ============================
+# PYINSTALLER (OPTIONAL)
+# EXE build output
+# ============================
+/dist/
+/build/
+/__pyinstaller_spec__/
+/*.spec
+
+# ============================
+# REPORTS / COVERAGE
+# ============================
+/htmlcov/
+/.tox/
+/pytest_cache/
+/coverage.xml
+/.coverage
+
+# ============================
+# OS-SPECIFIC
+# ============================
+# MacOS
+.DS_Store
+# Windows thumbs database
+Thumbs.db
+
+# ============================
+# CUSTOMTKINTER UI RESOURCES
+# If you add images later, REMOVE this block
+# and store images inside /assets or /resources.
+# ============================
+/assets/*.png
+/assets/*.jpg
+/assets/*.jpeg
+/assets/*.gif
