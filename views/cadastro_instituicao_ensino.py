@@ -18,7 +18,7 @@ class CadastroInstituicaoEnsino(ctk.CTkFrame):
         self.descricao = ctk.CTkEntry(self, placeholder_text="Descrição")
         self.descricao.pack(pady=10)
 
-        self.senha = ctk.CTkEntry(self, placeholder_text="Senha")
+        self.senha = ctk.CTkEntry(self, placeholder_text="Senha", show='*')
         self.senha.pack(pady=10)
 
         ctk.CTkButton(self, text="Salvar", command=self.save_entity).pack(pady=20)

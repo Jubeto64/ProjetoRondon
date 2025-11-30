@@ -13,6 +13,11 @@ class MenuScreen(ctk.CTkFrame):
         ).pack(pady=15)
 
         ctk.CTkButton(
+            self, text="Autenticação de Instituicao de Ensino",
+            command=lambda: app.show_frame("AutenticacaoInstituicaoEnsino")
+        ).pack(pady=15)
+
+        ctk.CTkButton(
             self, text="Listagem de Instituições de Ensino",
             command=lambda: app.show_frame("ListagemInstituicaoEnsino")
         ).pack(pady=15)
