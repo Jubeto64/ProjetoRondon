@@ -15,7 +15,7 @@ class AppView(ctk.CTk):
         self.instituicao_ensino_autenticada = None
 
         self.title("Projeto Rondon")
-        self.geometry("700x450")
+        self.geometry("800x450")
 
         self.instituicao_ensino_controller = instituicao_ensino_controller
         self.capacitacao_controller = capacitacao_controller

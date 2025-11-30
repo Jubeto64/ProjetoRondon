@@ -51,7 +51,8 @@ class MenuScreen(ctk.CTkFrame):
         
         df_filtered = df.drop("senha", axis=1)
         
-        columns = list(df_filtered.columns)
+        columns = list(df_filtered.columns) + ["Capacitações"]
+        capacitacoes_column = len(columns) - 1
 
         if self.app.instituicao_ensino_autenticada is not None:
             columns = columns + ["Editar"] + ["Excluir"]
@@ -64,6 +65,14 @@ class MenuScreen(ctk.CTkFrame):
             for col_index, value in enumerate(row):
                 cell = ctk.CTkLabel(self.table_frame, text=str(value), font=("Arial", 13))
                 cell.grid(row=row_index + 1, column=col_index, padx=10, pady=4)
+
+            capacitacoes_btn = ctk.CTkButton(
+                self.table_frame,
+                text="Listar",
+                width=80,
+                command=lambda entity_id=row["identificador"]: self.open_listagem_capacitacao(entity_id)
+            )
+            capacitacoes_btn.grid(row=row_index + 1, column=capacitacoes_column , padx=10)
 
             if self.app.instituicao_ensino_autenticada == row["identificador"]:
                 edit_btn = ctk.CTkButton(
@@ -81,6 +90,10 @@ class MenuScreen(ctk.CTkFrame):
                     command=lambda entity_id=row["identificador"]: self.delete_entity(entity_id)
                 )
                 del_btn.grid(row=row_index + 1, column=len(columns) - 1, padx=10)
+
+    def open_listagem_capacitacao(self, entity_id):
+        self.app.frames["ListagemCapacitacao"].load_table(entity_id)
+        self.app.show_frame("ListagemCapacitacao")
 
     def open_edit_screen(self, entity_id):
         self.app.frames["EdicaoInstituicaoEnsino"].load_entity(entity_id)
