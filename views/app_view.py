@@ -5,6 +5,7 @@ from views.cadastro_instituicao_ensino import CadastroInstituicaoEnsino
 from views.listagem_instituicao_ensino import ListagemInstituicaoEnsino
 from views.edicao_instituicao_ensino import EdicaoInstituicaoEnsino
 from views.cadastro_capacitacao import CadastroCapacitacao
+from views.listagem_capacitacao import ListagemCapacitacao
 
 class AppView(ctk.CTk):
     def __init__(self, instituicao_ensino_controller, capacitacao_controller):
@@ -28,6 +29,7 @@ class AppView(ctk.CTk):
             "ListagemInstituicaoEnsino": ListagemInstituicaoEnsino(self.container, self, csv_path=instituicao_ensino_controller.csv_path),
             "EdicaoInstituicaoEnsino": EdicaoInstituicaoEnsino(self.container, self, instituicao_ensino_controller.csv_path),
             "CadastroCapacitacao": CadastroCapacitacao(self.container, self, capacitacao_controller),
+            "ListagemCapacitacao": ListagemCapacitacao(self.container, self, csv_path=capacitacao_controller.csv_path),
         }
 
         for frame in self.frames.values():

@@ -26,6 +26,12 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
             command=self.cadastrar_capacitacao
         ).pack(pady=10)
 
+        ctk.CTkButton(
+            self,
+            text="Listagem de Capacitações",
+            command=self.lista_capacitacoes
+        ).pack(pady=10)
+
         ctk.CTkButton(self, text="Atualizar", command=self.save_changes).pack(pady=10)
 
         ctk.CTkButton(self, text="Excluir", fg_color="red", hover_color="#ff4d4d", command=self.delete_entity).pack(pady=10)
@@ -87,3 +93,8 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
         cadastro_capacitacao = self.app.frames["CadastroCapacitacao"]
         cadastro_capacitacao.set_identificador_instituicao(self.entity_id)
         self.app.show_frame("CadastroCapacitacao")
+
+    def lista_capacitacoes(self):
+        view_screen = self.app.frames["ListagemCapacitacao"]
+        view_screen.load_table(self.entity_id)
+        self.app.show_frame("ListagemCapacitacao")
