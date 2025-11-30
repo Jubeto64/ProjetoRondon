@@ -36,7 +36,7 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
 
         ctk.CTkButton(self, text="Excluir", fg_color="red", hover_color="#ff4d4d", command=self.delete_entity).pack(pady=10)
 
-        ctk.CTkButton(self, text="Voltar", command=lambda: app.show_frame("ListagemInstituicaoEnsino")).pack(pady=10)
+        ctk.CTkButton(self, text="Voltar", command=lambda: app.show_frame("Menu")).pack(pady=10)
 
     def load_entity(self, entity_id):
         self.entity_id = entity_id
@@ -67,8 +67,8 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
             icon="check"
         )
 
-        self.app.frames["ListagemInstituicaoEnsino"].load_table()
-        self.app.show_frame("ListagemInstituicaoEnsino")
+        self.app.frames["Menu"].load_table()
+        self.app.show_frame("Menu")
 
     def delete_entity(self):
         answer = CTkMessagebox(
@@ -86,8 +86,8 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
 
             CTkMessagebox(title="Excluído", message="Instituição de Ensino Exluída com sucesso!", icon="check")
 
-            self.app.frames["ListagemInstituicaoEnsino"].load_table()
-            self.app.show_frame("ListagemInstituicaoEnsino")
+            self.app.frames["Menu"].load_table()
+            self.app.show_frame("Menu")
 
     def cadastrar_capacitacao(self):
         cadastro_capacitacao = self.app.frames["CadastroCapacitacao"]

@@ -17,7 +17,7 @@ class ListagemCapacitacao(ctk.CTkFrame):
         button_frame.pack(pady=10)
 
         ctk.CTkButton(button_frame, text="Atualizar", command=self.load_table).grid(row=0, column=0, padx=10)
-        ctk.CTkButton(button_frame, text="Voltar", command=lambda: app.show_frame("ListagemInstituicaoEnsino")).grid(row=0, column=1, padx=10)
+        ctk.CTkButton(button_frame, text="Voltar", command=lambda: app.show_frame("Menu")).grid(row=0, column=1, padx=10)
 
     def clear_table(self):
         for widget in self.table_frame.winfo_children():

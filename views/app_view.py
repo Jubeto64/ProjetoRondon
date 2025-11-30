@@ -2,7 +2,6 @@ import customtkinter as ctk
 
 from views.menu_screen import MenuScreen
 from views.cadastro_instituicao_ensino import CadastroInstituicaoEnsino
-from views.listagem_instituicao_ensino import ListagemInstituicaoEnsino
 from views.edicao_instituicao_ensino import EdicaoInstituicaoEnsino
 from views.cadastro_capacitacao import CadastroCapacitacao
 from views.listagem_capacitacao import ListagemCapacitacao
@@ -28,9 +27,8 @@ class AppView(ctk.CTk):
         self.container.grid_columnconfigure(0, weight=1)
 
         self.frames = {
-            "Menu": MenuScreen(self.container, self),
+            "Menu": MenuScreen(self.container, self, instituicao_ensino_controller.csv_path),
             "CadastroInstituicaoEnsino": CadastroInstituicaoEnsino(self.container, self, instituicao_ensino_controller),
-            "ListagemInstituicaoEnsino": ListagemInstituicaoEnsino(self.container, self, csv_path=instituicao_ensino_controller.csv_path),
             "EdicaoInstituicaoEnsino": EdicaoInstituicaoEnsino(self.container, self, instituicao_ensino_controller.csv_path),
             "CadastroCapacitacao": CadastroCapacitacao(self.container, self, capacitacao_controller),
             "ListagemCapacitacao": ListagemCapacitacao(self.container, self, csv_path=capacitacao_controller.csv_path),

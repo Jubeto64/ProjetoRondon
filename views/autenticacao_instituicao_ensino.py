@@ -41,4 +41,5 @@ class AutenticacaoInstituicaoEnsino(ctk.CTkFrame):
                 message="Autenticado realizada",
                 icon="check"
             )
+            self.app.frames["Menu"].load_table()
             self.app.show_frame("Menu")
