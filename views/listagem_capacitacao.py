@@ -41,7 +41,10 @@ class ListagemCapacitacao(ctk.CTkFrame):
             ctk.CTkLabel(self.table_frame, text="Capacitações não encontradas").pack()
             return
 
-        columns = list(df_filtered.columns) + ["Editar"]
+        columns = list(df_filtered.columns)
+
+        if self.app.instituicao_ensino_autenticada == identificador_instituicao:
+            columns + ["Editar"]
 
         for col_index, col_name in enumerate(columns):
             header = ctk.CTkLabel(self.table_frame, text=col_name, font=("Arial", 14, "bold"))
@@ -52,13 +55,14 @@ class ListagemCapacitacao(ctk.CTkFrame):
                 cell = ctk.CTkLabel(self.table_frame, text=str(value), font=("Arial", 13))
                 cell.grid(row=row_index + 1, column=col_index, padx=10, pady=4)
 
-            edit_btn = ctk.CTkButton(
-                self.table_frame,
-                text="Editar",
-                width=80,
-                command=lambda entity_id=row["identificador"]: self.open_edit_screen(entity_id)
-            )
-            edit_btn.grid(row=row_index + 1, column=len(columns) - 1, padx=10)
+            if self.app.instituicao_ensino_autenticada == identificador_instituicao:
+                edit_btn = ctk.CTkButton(
+                    self.table_frame,
+                    text="Editar",
+                    width=80,
+                    command=lambda entity_id=row["identificador"]: self.open_edit_screen(entity_id)
+                )
+                edit_btn.grid(row=row_index + 1, column=len(columns) - 1, padx=10)
 
     def open_edit_screen(self, entity_id):
         self.app.frames["EdicaoCapacitacao"].load_entity(entity_id)
