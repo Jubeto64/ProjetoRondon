@@ -37,3 +37,6 @@ class CadastroInstituicaoEnsino(ctk.CTkFrame):
             self.nome.delete(0, "end")
             self.descricao.delete(0, "end")
             self.senha.delete(0, "end")
+
+        self.app.frames["Menu"].load_table()
+        self.app.show_frame("Menu")
