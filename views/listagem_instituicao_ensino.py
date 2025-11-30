@@ -37,13 +37,15 @@ class ListagemInstituicaoEnsino(ctk.CTkFrame):
             ctk.CTkLabel(self.table_frame, text="Arquivo CSV vazio").pack()
             return
         
-        columns = list(df.columns) + ["Editar"]
+        df_filtered = df.drop("senha", axis=1)
+        
+        columns = list(df_filtered.columns) + ["Editar"]
 
         for col_index, col_name in enumerate(columns):
             header = ctk.CTkLabel(self.table_frame, text=col_name, font=("Arial", 14, "bold"))
             header.grid(row=0, column=col_index, padx=10, pady=5)
 
-        for row_index, row in df.iterrows():
+        for row_index, row in df_filtered.iterrows():
             for col_index, value in enumerate(row):
                 cell = ctk.CTkLabel(self.table_frame, text=str(value), font=("Arial", 13))
                 cell.grid(row=row_index + 1, column=col_index, padx=10, pady=4)

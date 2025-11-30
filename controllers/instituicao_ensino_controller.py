@@ -5,11 +5,12 @@ class InstituicaoEnsinoController:
     def __init__(self):
         self.csv_path = "data/instituicao_ensino.csv"
 
-    def create_entity(self, identificador, nome, descricao):        
+    def create_entity(self, identificador, nome, descricao, senha):        
         data = {
             "identificador": identificador,
             "nome": nome,
-            "descricao": descricao
+            "descricao": descricao,
+            "senha": senha
         }
 
         save_to_csv(data, self.csv_path)

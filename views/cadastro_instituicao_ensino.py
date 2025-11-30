@@ -15,8 +15,11 @@ class CadastroInstituicaoEnsino(ctk.CTkFrame):
         self.nome = ctk.CTkEntry(self, placeholder_text="Nome")
         self.nome.pack(pady=10)
 
-        self.descricao = ctk.CTkEntry(self, placeholder_text="Descricao")
+        self.descricao = ctk.CTkEntry(self, placeholder_text="Descrição")
         self.descricao.pack(pady=10)
+
+        self.senha = ctk.CTkEntry(self, placeholder_text="Senha")
+        self.senha.pack(pady=10)
 
         ctk.CTkButton(self, text="Salvar", command=self.save_entity).pack(pady=20)
 
@@ -26,9 +29,11 @@ class CadastroInstituicaoEnsino(ctk.CTkFrame):
         identificador = self.identificador.get()
         nome = self.nome.get()
         descricao = self.descricao.get()
+        senha = self.senha.get()
 
         if identificador and nome:
-            self.controller.create_entity(identificador, nome, descricao)
+            self.controller.create_entity(identificador, nome, descricao, senha)
             self.identificador.delete(0, "end")
             self.nome.delete(0, "end")
             self.descricao.delete(0, "end")
+            self.senha.delete(0, "end")
