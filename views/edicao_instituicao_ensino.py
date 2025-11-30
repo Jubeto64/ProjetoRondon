@@ -84,7 +84,7 @@ class EdicaoInstituicaoEnsino(ctk.CTkFrame):
             df = df[df["identificador"] != self.entity_id]
             df.to_csv(self.csv_path, index=False)
 
-            CTkMessagebox(title="Excluído", message="Instituição de Ensino Exluída com sucesso!", icon="check")
+            CTkMessagebox(title="Excluído", message="Instituição de Ensino Excluída com sucesso!", icon="check")
 
             self.app.frames["Menu"].load_table()
             self.app.show_frame("Menu")

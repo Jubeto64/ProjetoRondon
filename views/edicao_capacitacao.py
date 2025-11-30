@@ -74,7 +74,7 @@ class EdicaoCapacitacao(ctk.CTkFrame):
             df = df[df["identificador"] != self.entity_id]
             df.to_csv(self.csv_path, index=False)
 
-            CTkMessagebox(title="Excluído", message="Capacitação Exluída com sucesso!", icon="check")
+            CTkMessagebox(title="Excluído", message="Capacitação Excluída com sucesso!", icon="check")
 
             self.app.frames["ListagemCapacitacao"].load_table()
             self.app.show_frame("ListagemCapacitacao")

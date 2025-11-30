@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import pandas as pd
-
+from CTkMessagebox import CTkMessagebox
 
 class ListagemCapacitacao(ctk.CTkFrame):
     def __init__(self, parent, app, csv_path):
@@ -44,7 +44,7 @@ class ListagemCapacitacao(ctk.CTkFrame):
         columns = list(df_filtered.columns)
 
         if self.app.instituicao_ensino_autenticada == identificador_instituicao:
-            columns + ["Editar"]
+            columns = columns + ["Editar"] + ["Excluir"]
 
         for col_index, col_name in enumerate(columns):
             header = ctk.CTkLabel(self.table_frame, text=col_name, font=("Arial", 14, "bold"))
@@ -62,8 +62,34 @@ class ListagemCapacitacao(ctk.CTkFrame):
                     width=80,
                     command=lambda entity_id=row["identificador"]: self.open_edit_screen(entity_id)
                 )
-                edit_btn.grid(row=row_index + 1, column=len(columns) - 1, padx=10)
+                edit_btn.grid(row=row_index + 1, column=len(columns) - 2, padx=10)
+
+                del_btn = ctk.CTkButton(
+                    self.table_frame,
+                    text="Deletar",
+                    width=80,
+                    command=lambda entity_id=row["identificador"]: self.delete_entity(entity_id, identificador_instituicao)
+                )
+                del_btn.grid(row=row_index + 1, column=len(columns) - 1, padx=10)
 
     def open_edit_screen(self, entity_id):
         self.app.frames["EdicaoCapacitacao"].load_entity(entity_id)
         self.app.show_frame("EdicaoCapacitacao")
+
+    def delete_entity(self, entity_id, identificador_instituicao):
+        answer = CTkMessagebox(
+            title="Confirmar Exclusão",
+            message="Realmente deseja Excluir?",
+            icon="warning",
+            option_1="Sim",
+            option_2="Não"
+        ).get()
+                
+        if answer == "Sim":
+            df = pd.read_csv(self.csv_path, dtype={"identificador": str})
+            df = df[df["identificador"] != entity_id]
+            df.to_csv(self.csv_path, index=False)
+
+            CTkMessagebox(title="Excluído", message="Capacitação Excluída com sucesso!", icon="check")
+
+            self.load_table(identificador_instituicao)
